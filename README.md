@@ -1,11 +1,11 @@
 # ngXpress: Full-Stack Angular 22 SSR Starter Kit with Express 5, Prisma, PostgreSQL, Tailwind CSS 4, Spartan/ui, and Better Auth
 
-[![ngXpress](https://img.shields.io/badge/ngXpress-v1.0.0-0f172a.svg)](./package.json)
+[![ngXpress](https://img.shields.io/badge/ngXpress-v1.0.0-4f46e5.svg)](./package.json)
 [![Angular](https://img.shields.io/badge/Angular-22-red.svg)](https://angular.dev/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1+-green.svg)](https://expressjs.com/)
 [![Prisma](https://img.shields.io/badge/Prisma-7-2D3748.svg)](https://www.prisma.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-ready-336791.svg)](https://www.postgresql.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8.svg)](https://tailwindcss.com/)
+[![spartan/ui](https://img.shields.io/badge/spartan%2Fui-1.3-e11d48.svg)](https://spartan.ng/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -16,7 +16,7 @@
 
 Created and maintained by [@immohammadjaved](https://x.com/immohammadjaved)
 
-**ngXpress** is an Angular SaaS starter with the Next.js-style full-stack loop: one process, server-side rendering, a real API, and auth that ships. This is a production-oriented [Angular 22](https://angular.dev/) + [Express 5](https://expressjs.com/) boilerplate with out-of-the-box SSR, zoneless execution, [Prisma 7](https://www.prisma.io/) (**PostgreSQL by default**; any database Prisma supports), [Better Auth](https://www.better-auth.com/), [spartan/ui](https://spartan.ng/) (Helm + Brain — the shadcn-style kit for Angular), Tailwind CSS 4, and Signal Forms. Feature-first on both the UI and the API — clone it, rebrand it, ship it.
+**ngXpress** is an Angular full-stack starter: one process, server-side rendering, a real API, and auth that ships. This is a production-oriented [Angular 22](https://angular.dev/) + [Express 5](https://expressjs.com/) boilerplate with out-of-the-box SSR, zoneless execution, [Prisma 7](https://www.prisma.io/) (**PostgreSQL by default**; any database Prisma supports), [Better Auth](https://www.better-auth.com/), [spartan/ui](https://spartan.ng/) (Helm + Brain — the shadcn-style kit for Angular), Tailwind CSS 4, and Signal Forms. Feature-first on both the UI and the API — clone it, rebrand it, ship it.
 
 > This is the **first tagged baseline** of ngXpress on the current stack. If you used the earlier Angular 20 / SQLite / npm template, see [Upgrading from the Angular 20 template](#upgrading-from-the-angular-20-template) — treat this as a new start, not a drop-in merge.
 
