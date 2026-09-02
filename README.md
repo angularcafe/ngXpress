@@ -1,276 +1,289 @@
-# ngXpress: Full-Stack Angular 20+ Starter Kit with Server-Side Rendering (SSR), Express 5, Prisma ORM, Tailwind CSS 4, and Better Auth Integration
+# ngXpress: Full-Stack Angular 22 SSR Starter Kit with Express 5, Prisma, PostgreSQL, Tailwind CSS 4, Spartan/ui, and Better Auth
 
-[![ngXpress](https://img.shields.io/github/package-json/v/angularcafe/ngxpress?label=ngXpress)](./package.json)
-[![Angular](https://img.shields.io/badge/Angular-20-red.svg)](https://angular.dev/)
+[![ngXpress](https://img.shields.io/badge/ngXpress-v1.0.0-4f46e5.svg)](./package.json)
+[![Angular](https://img.shields.io/badge/Angular-22-red.svg)](https://angular.dev/)
 [![Express.js](https://img.shields.io/badge/Express.js-5.1+-green.svg)](https://expressjs.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-7-2D3748.svg)](https://www.prisma.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8.svg)](https://tailwindcss.com/)
+[![spartan/ui](https://img.shields.io/badge/spartan%2Fui-1.3-e11d48.svg)](https://spartan.ng/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-
-![GitHub stars](https://img.shields.io/github/stars/angularcafe/ngxpress)
-![GitHub forks](https://img.shields.io/github/forks/angularcafe/ngxpress)
-![GitHub issues](https://img.shields.io/github/issues/angularcafe/ngxpress)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/angularcafe/ngxpress)
+[![GitHub stars](https://img.shields.io/github/stars/angularcafe/ngxpress)](https://github.com/angularcafe/ngXpress/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/angularcafe/ngxpress)](https://github.com/angularcafe/ngXpress/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/angularcafe/ngxpress)](https://github.com/angularcafe/ngXpress/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/angularcafe/ngxpress)](https://github.com/angularcafe/ngXpress/pulls)
 
 Created and maintained by [@immohammadjaved](https://x.com/immohammadjaved)
 
-Think of **ngXpress** as bringing the best of the Next.js experience to Angular—without the bloat or learning curve. ngXpress is a modern, full-stack Angular 20 + Express 5 starter kit featuring out-of-the-box server-side rendering (SSR), zoneless execution, Prisma ORM, secure authentication with better-auth, and Tailwind CSS for responsive UIs. Build scalable, production-ready web applications with zero boilerplate and a feature-first, modular backend structure—perfect for both prototypes and production apps.
+**ngXpress** is an Angular full-stack starter: one process, server-side rendering, a real API, and auth that ships. This is a production-oriented [Angular 22](https://angular.dev/) + [Express 5](https://expressjs.com/) boilerplate with out-of-the-box SSR, zoneless execution, [Prisma 7](https://www.prisma.io/) (**PostgreSQL by default**; any database Prisma supports), [Better Auth](https://www.better-auth.com/), [spartan/ui](https://spartan.ng/) (Helm + Brain — the shadcn-style kit for Angular), Tailwind CSS 4, and Signal Forms. Feature-first on both the UI and the API — clone it, rebrand it, ship it.
 
-## 🚀 Live Demo
+> This is the **first tagged baseline** of ngXpress on the current stack. If you used the earlier Angular 20 / SQLite / npm template, see [Upgrading from the Angular 20 template](#upgrading-from-the-angular-20-template) — treat this as a new start, not a drop-in merge.
 
-Check out a live example of ngXpress in action:
+## Live demo
 
-[View Live Demo](http://demo.ngxpress.dev)
+See ngXpress running as the **Stride** sample app (landing, auth, dashboard, tasks):
 
----
-
-## ✨ Features & Tech Stack
-
-- **Angular 20+**: Leverage the latest Angular with signals, standalone components, and new control flow for modern, reactive UIs
-- **Server-Side Rendering (SSR)**: Out-of-the-box SSR for SEO, performance, and fast initial loads
-- **Express 5 Backend**: Modular, feature-first REST API architecture for rapid backend development
-- **Prisma ORM**: Type-safe database access (SQLite by default, easily switchable to PostgreSQL, MySQL, etc.)
-- **Zoneless Execution**: No zone.js overhead—enjoy maximum speed and simplicity
-- **Better Auth Integration**: Secure, production-ready authentication out of the box
-- **Tailwind CSS 4**: Build beautiful, responsive UIs with utility-first CSS
-- **TypeScript Everywhere**: Strict typing for both frontend and backend
-- **NgOptimizedImage**: Performant image handling for Angular apps
-- **Global Error Handling**: Robust error management for APIs and UI
-- **Ready for Deployment**: Optimized for Vercel, Netlify, and traditional servers
-- **Easy to Extend & Maintain**: Clean, scalable codebase and feature-first folder structure
-- **Dev & Tooling**: Angular CLI, ESLint & Prettier, Vite (optional), VS Code recommended settings, Node.js 20+
+[View live demo](http://demo.ngxpress.dev) · [ngxpress.dev](https://ngxpress.dev)
 
 ---
 
-## ⚡ Quick Start Guide
+## Features and tech stack
 
-Get started with your own ngXpress project in minutes:
-
-1. **Create Your Project from the Template**
-   - Click the **“Use this template”** button on the [ngXpress GitHub repository](https://github.com/angularcafe/ngxpress) to generate a new repository under your GitHub account.
-
-2. **Clone Your New Repository**
-   ```bash
-   git clone https://github.com/<your-username>/<your-repo-name>.git
-   cd <your-repo-name>
-   ```
-
-3. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-4. **Set Up the Database (Prisma + SQLite by default)**
-   ```bash
-   npx prisma generate
-   npx prisma db push
-   ```
-
-5. **Start the Development Server (Angular + Express SSR)**
-   ```bash
-   npm run dev
-   ```
-
-6. **Open Your Browser**
-   - Visit [http://localhost:4200](http://localhost:4200)
-
-**Additional Tips:**
-- To open Prisma Studio (DB GUI):  
-  `npx prisma studio`
-- To build for production:  
-  `npm run build`
-- To start the production server:  
-  `npm run start`
-- Configure environment variables in the `.env` file as needed.
+- **Angular 22** — standalone components, signals, native control flow (`@if` / `@for`), zoneless by default
+- **SSR in one process** — `@angular/ssr` + Express 5; no separate frontend/backend servers
+- **Better Auth** — email/password, session cookies, password reset, SSR session via TransferState
+- **Prisma 7** — PostgreSQL is the default (`@prisma/adapter-pg`). Swap the datasource, adapter, `DATABASE_URL`, and Better Auth `provider` for any [database Prisma supports](https://www.prisma.io/docs/orm/overview/databases) (MySQL, SQLite, SQL Server, CockroachDB, MongoDB, and others).
+- **spartan/ui** — accessible Helm components (Brain primitives + Tailwind) in `src/app/shared/ui`
+- **Signal Forms** — `@angular/forms/signals` on login, signup, and task dialogs
+- **Tailwind CSS 4** — utility-first styling with the Spartan Vega theme
+- **TypeScript everywhere** — app, Express API, and Prisma client
+- **Guards and layouts** — guest auth screens, authenticated `/admin` workspace
+- **Production-minded API** — rate limits on `/api` and `/api/auth`, 100kb JSON body cap
+- **AI-ready repo** — Angular, Spartan, Better Auth, and Prisma MCP configs plus a Spartan agent skill
+- **pnpm 11** — `packageManager` pinned; lockfile is the source of truth
 
 ---
 
-## 📦 What’s Included
+## Upgrading from the Angular 20 template
 
-- **Beautiful SaaS Landing Page:** Modern, responsive, and ready to customize
-- **Authentication Screens:** Sign In, Sign Up, Forgot/Reset Password (secure, production-ready)
-- **Admin Dashboard:** Modular, extendable admin interface
-- **Todos CRUD Example:** End-to-end CRUD with Angular, Express, and Prisma
+The previous public template used Angular 20, SQLite, and npm. **ngXpress** is a new baseline:
+
+| | Previous template | This repo |
+|---|---|---|
+| Angular | 20 | **22** |
+| Database | SQLite | **PostgreSQL (default)** |
+| Package manager | npm | **pnpm 11** |
+| UI kit | Tailwind only | **spartan/ui (Helm)** |
+| Forms | Template / reactive | **Signal Forms** |
+| Demo CRUD | Todos | **Tasks** (status, priority, due date) |
+| Auth + ORM | Better Auth + Prisma | Better Auth + **Prisma 7** (`@prisma/adapter-pg`) |
 
 ---
 
-## 📂 File Structure
+## Quick start
 
-A clear, modular structure for both frontend (Angular) and backend (Express):
+**Prerequisites:** Node.js 20+, [pnpm 11](https://pnpm.io/), and a database. The default is PostgreSQL (database name `ngxpress`).
+
+1. **Use this template** on [github.com/angularcafe/ngXpress](https://github.com/angularcafe/ngXpress), or clone it:
+
+   ```bash
+   git clone https://github.com/angularcafe/ngXpress.git
+   cd ngXpress
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Environment**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Generate `BETTER_AUTH_SECRET` with `openssl rand -base64 32`. Keep `BETTER_AUTH_TRUSTED_ORIGINS` in sync with the URLs you actually use (`http://localhost:4200` for `pnpm dev`, `http://localhost:4000` for production).
+
+4. **Database**
+
+   Create an empty PostgreSQL database (default), then:
+
+   ```bash
+   pnpm db:generate
+   pnpm db:deploy
+   ```
+
+   `db:deploy` applies committed migrations (`prisma migrate deploy`). Use `pnpm db:migrate` (`prisma migrate dev`) when you change the schema locally. `pnpm db:push` is only for throwaway prototyping.
+
+5. **Dev server** (Angular + Express SSR)
+
+   ```bash
+   pnpm dev
+   ```
+
+   Open [http://localhost:4200](http://localhost:4200).
+
+**Scripts**
+
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Dev server (port 4200) |
+| `pnpm build` | `prisma generate` + production Angular SSR build (does not touch the database) |
+| `pnpm start` | Apply pending migrations, then serve `dist` (port 4000, or `PORT`) |
+| `pnpm test` | Unit tests (Vitest) |
+| `pnpm db:studio` | Prisma Studio |
+| `pnpm db:migrate` | Create and apply a migration locally (`prisma migrate dev`) |
+| `pnpm db:deploy` | Apply committed migrations (`prisma migrate deploy`) |
+| `pnpm db:push` | Prototype schema without a migration (local only) |
+| `pnpm auth:generate` | Regenerate Better Auth Prisma models |
+
+Rebrand the demo product in `src/app/core/config/app-brand.ts` (`APP_NAME`, tagline, template URL) and the `<title>` in `src/index.html`.
+
+---
+
+## What’s included
+
+- **SaaS landing page** — hero, features, pricing, FAQ, dark/light theme
+- **Authentication** — sign in, sign up, forgot/reset password
+- **Admin workspace** — sidebar layout, dashboard stats, session-aware nav
+- **Tasks CRUD** — list, filter, create, update, delete; API scoped to the signed-in user
+- **Error pages** — 403, 404, 500, 503 shells you can wire to real status codes
+
+---
+
+## File structure
+
+Frontend (`src/app`) and backend (`src/api`) stay in one Angular SSR app:
 
 ```text
 src/
 ├── app/
-│   ├── components/      # Standalone, reusable UI components
-│   ├── core/            # Core services, guards, and utilities
-│   ├── layouts/         # Application layouts (admin, auth, main)
-│   ├── models/          # TypeScript interfaces and models
-│   ├── pages/           # Route-based pages (admin, home, auth, not-found)
-│   ├── services/        # Feature and domain services
-│   ├── app.component.ts
-│   ├── app.routes.ts
-│   └── ...
+│   ├── core/                 # Auth client/service, guards, brand, theme
+│   ├── pages/                # Landing, auth, admin (dashboard + tasks), errors
+│   ├── shared/
+│   │   ├── components/       # App chrome (sidebar, brand)
+│   │   ├── layouts/          # Auth + admin shells
+│   │   └── ui/               # spartan/ui Helm (CLI-managed)
+│   ├── app.ts
+│   └── app.routes.ts
 ├── api/
-│   ├── features/
-│   │   └── todos/
-│   │       ├── todos.controller.ts
-│   │       └── todos.routes.ts
-│   ├── lib/
-│   │   ├── prisma.ts
-│   │   └── auth.ts
-│   ├── middlewares/     # Express middlewares
-│   ├── utils/           # Utility functions
-│   └── api.ts           # Main API router
-├── generated/           # Prisma generated client
-├── main.ts              # Angular entry point
-├── main.server.ts       # Angular SSR entry point
-├── server.ts            # Express server entry point
-└── styles.css           # Global styles
+│   ├── features/tasks/       # Express routes + controller
+│   ├── lib/                  # Prisma, Better Auth, session, rate limits
+│   └── api.ts
+├── generated/prisma/         # Prisma client (gitignored; run db:generate)
+├── main.ts
+├── main.server.ts
+├── server.ts                 # Express + Angular SSR entry
+└── styles.css
+prisma/
+├── schema.prisma
+├── models/                   # auth.prisma, task.prisma
+└── migrations/               # committed SQL; applied with db:deploy
 ```
 
-- **Separation of concerns:** Frontend and backend code are clearly separated for maintainability.
-- **Feature-first:** Both Angular and Express codebases are organized by feature for scalability.
-- **Ready for extension:** Add new features by creating new folders in `src/app/pages` or `src/api/features`.
+Add UI features under `src/app/pages`. Add API features under `src/api/features`. Do not hand-edit Helm sources in `src/app/shared/ui` — use the [spartan CLI](https://spartan.ng/).
 
 ---
 
-## 🔗 Import Aliases
+## Import aliases
 
-ngXpress uses TypeScript path aliases for clean, maintainable imports throughout your Angular app. This eliminates long relative paths and makes refactoring easier.
-
-### Why Use Import Aliases?
-- **Readability:** Cleaner, more descriptive import statements
-- **Maintainability:** Refactor and move files without breaking imports
-- **Scalability:** Add new features and modules with less hassle
-
-### Usage Example
+Configured in `tsconfig.json`:
 
 ```typescript
-// ❌ Without aliases (hard to maintain)
-import { TodoService } from '../../../services/todo.service';
-import { AuthGuard } from '../../core/guards/auth.guard';
-
-// ✅ With aliases (recommended)
-import { TodoService } from '@services/todo.service';
-import { AuthGuard } from '@core/guards/auth.guard';
+import { AuthService } from '@core/auth/auth.service';
+import { authGuard } from '@core/guards/auth.guard';
+import { AdminLayout } from '@layouts/admin.layout';
+import { BrandLogo } from '@components/brand/brand-logo';
 ```
 
-### Available Aliases
-
-| Alias              | Path                          | Description                        |
-|--------------------|-------------------------------|------------------------------------|
-| `@components/*`    | `src/app/components/*`        | Reusable UI components             |
-| `@core/*`          | `src/app/core/*`              | Core services, guards, utilities   |
-| `@layouts/*`       | `src/app/layouts/*`           | Application layouts                |
-| `@models/*`        | `src/app/models/*`            | TypeScript interfaces and models   |
-| `@pages/*`         | `src/app/pages/*`             | Route-based pages                  |
-| `@services/*`      | `src/app/services/*`          | Feature/domain services            |
-
-Aliases are configured in `tsconfig.json` and work seamlessly with Angular CLI and most editors (VS Code recommended).
-
-### Adding New Aliases
-1. Open `tsconfig.json` in the project root.
-2. Add your new alias under the `compilerOptions.paths` section. For example:
-   ```json
-   "@utils/*": ["src/app/utils/*"]
-   ```
-3. Restart your IDE for the changes to take effect.
-
-For more details, see the [TypeScript documentation on path mapping](https://www.typescriptlang.org/tsconfig#paths).
+| Alias | Path | Use for |
+|---|---|---|
+| `@core/*` | `src/app/core/*` | Auth, guards, brand, theme |
+| `@pages/*` | `src/app/pages/*` | Route pages |
+| `@layouts/*` | `src/app/shared/layouts/*` | Auth / admin layouts |
+| `@components/*` | `src/app/shared/components/*` | Shared app components |
+| `@shared/*` | `src/app/shared/*` | Shared tree (including layouts) |
+| `@spartan-ng/helm/*` | `src/app/shared/ui/...` | Helm components (see `components.json`) |
 
 ---
 
-## 🚀 Deployment
+## Security and deployment
 
-ngXpress is designed to be deployment-ready out of the box and can be deployed to any server that supports Angular 20+ SSR applications. You can deploy this app like a regular Node.js application - no need to run frontend and backend separately as it's a single, unified application.
+ngXpress is a **single Node SSR app**. Build once, run `pnpm start` behind TLS. Vercel / Netlify / Docker adapters are not first-class yet; a VPS, VM, or any Node 20+ host works.
 
-**Note:** Work is in progress to add support for Vercel, Netlify, and Docker deployment. For now, traditional server deployment is recommended.
+### Production checklist
 
-### Traditional Server Deployment (Recommended)
-
-For VPS, dedicated servers, or any Node.js hosting provider:
-
-1. **Build the Application**
-   ```bash
-   npm run build
-   ```
-
-2. **Start Production Server**
-   ```bash
-   npm run start
-   ```
-
-3. **Environment Setup**
-   - Ensure Node.js 20+ is installed on your server
-   - Set production environment variables
-   - Use a process manager like PM2 for production
-
-### Environment Variables
-
-Ensure these environment variables are set in production:
+1. Copy `.env.example` → `.env` and set a strong `BETTER_AUTH_SECRET`.
+2. Set `BETTER_AUTH_URL` to your public HTTPS origin.
+3. Set `BETTER_AUTH_TRUSTED_ORIGINS` to those exact origins (no trailing-slash mismatches).
+4. Set `NODE_ENV=production`.
+5. Terminate TLS at a reverse proxy; run Node on an internal port (`PORT`, default 4000).
+6. Replace the dev email logger (`src/api/lib/email.ts`) before sending real password-reset mail. In production it **throws** until a provider is wired.
 
 ```bash
-# Database
-DATABASE_URL="your_database_connection_string"
+pnpm build
+pnpm start
+```
 
-# Authentication
+`pnpm build` only generates the Prisma client and compiles the app. `pnpm start` runs `prisma migrate deploy` before the Node server so an empty production database gets the auth and task tables. If the host has a separate **release** command, set that to `pnpm db:deploy` and you can still use `pnpm start` (a second `migrate deploy` is a no-op when everything is already applied).
+
+```bash
+DATABASE_URL="postgresql://USER:PASS@HOST:5432/ngxpress"
 BETTER_AUTH_SECRET="your_secret_key"
 BETTER_AUTH_URL="https://yourdomain.com"
-
-# Optional: Customize ports
+BETTER_AUTH_TRUSTED_ORIGINS="https://yourdomain.com"
+NODE_ENV="production"
 PORT=4000
 ```
 
-### Database Considerations
+The Express layer already applies:
 
-- **SQLite**: Good for development and small applications
-- **PostgreSQL/MySQL**: Recommended for production applications
-- **Database Migrations**: Run `npx prisma migrate deploy` in production
-- **Connection Pooling**: Configure in your Prisma schema for production databases
+- Stricter rate limits on `/api/auth`
+- General rate limits on `/api`
+- JSON body size limit (100kb) on non-auth API routes
 
-### Supported Hosting Providers
+Rate limiting is in-memory (one Node process). Do not enable naive `trust proxy` unless you understand spoofed `X-Forwarded-For` headers.
 
-ngXpress works with any server that supports Angular 20+ SSR applications:
+### Database
 
-- **VPS Providers**: DigitalOcean, Linode, Vultr, AWS EC2, Google Cloud Compute
-- **Shared Hosting**: Any provider with Node.js 20+ and Angular SSR support
-- **Traditional Hosting**: Any server with Node.js 20+ support
-- **Cloud Platforms**: AWS, Google Cloud, Azure (with proper Node.js setup)
+PostgreSQL is the default (`DATABASE_URL`, `prisma/schema.prisma`, `@prisma/adapter-pg`, Better Auth `provider: 'postgresql'`). Prisma can target [any supported database](https://www.prisma.io/docs/orm/overview/databases). To switch:
 
-**Coming Soon:** Vercel, Netlify, and Docker deployment support
+1. Change `provider` in `prisma/schema.prisma` and `DATABASE_URL` in `.env`.
+2. Install the matching Prisma adapter (for example `@prisma/adapter-mariadb` or `@prisma/adapter-better-sqlite3`) and wire it in `src/api/lib/prisma.ts`.
+3. Set the same engine on Better Auth in `src/api/lib/auth.ts` (`prismaAdapter(..., { provider: 'mysql' | 'sqlite' | ... })`).
+4. Run `pnpm db:generate` and `pnpm db:migrate` (or `pnpm db:deploy` against an empty database).
 
----
+Production uses `prisma migrate deploy` (`pnpm db:deploy` / `pnpm start`). Do not use `db:push` or `migrate dev` against production: `db push` has no migration history and can drop data; `migrate dev` is a development command.
 
-## 📚 Documentation & Resources
+If this database already has the tables (for example you previously ran `db:push`), do **not** re-run the init SQL. Mark it applied, then deploy:
 
-- **Angular Documentation**: [angular.dev](https://angular.dev)
-- **Express.js Documentation**: [expressjs.com](https://expressjs.com/en/5x/api.html)
-- **Prisma Documentation**: [prisma.io](https://www.prisma.io/docs/)
-- **Tailwind CSS Documentation**: [tailwindcss.com](https://tailwindcss.com/docs)
-- **Better Auth Documentation**: [better-auth.com](https://www.better-auth.com/docs/introduction)
+```bash
+pnpm exec prisma migrate resolve --applied 20260902120000_init
+pnpm db:deploy
+```
 
----
+### Hosting
 
-## 🤝 Contributing
-
-We welcome contributions to ngXpress! Please read our [Contributing Guide](CONTRIBUTING.md) for details on how to contribute.
+Any host that can run Angular SSR + Node works: DigitalOcean, Linode, Hetzner, AWS EC2, GCP Compute, Azure VMs, and similar. Use a process manager such as PM2 in production.
 
 ---
 
-## 📝 License
+## Documentation
 
-ngXpress is open-source software licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as per the license terms.
+- [Angular](https://angular.dev)
+- [Express 5](https://expressjs.com/en/5x/api.html)
+- [Prisma](https://www.prisma.io/docs/)
+- [Better Auth](https://www.better-auth.com/docs/introduction)
+- [spartan/ui](https://www.spartan.ng/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [pnpm](https://pnpm.io/)
+
+Agent conventions for this repo live in [`AGENTS.md`](AGENTS.md).
 
 ---
 
-## 🏷️ Keywords
+## Contributing
 
-angular, angular-starter, angular-template, angular-fullstack, angular-universal, angular-ssr, angular-express, angular-prisma, angular-tailwind, angular-auth, fullstack, fullstack-starter, ssr, express, expressjs, prisma, tailwindcss, authentication, better-auth, typescript, nodejs, monorepo, modern-web, scalable, production-ready, nextjs-alternative, nextjs-for-angular, zoneless, angular-zoneless
+See [CONTRIBUTING.md](CONTRIBUTING.md). Issues and discussions: [github.com/angularcafe/ngXpress](https://github.com/angularcafe/ngXpress).
 
 ---
 
-## 👤 Creator
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+## Keywords
+
+angular, angular-22, angular-starter, angular-saas-starter, angular-saas, saas-starter, saas-boilerplate, angular-boilerplate, angular-template, angular-fullstack, fullstack-angular, angular-ssr, angular-universal, angular-express, angular-express-ssr, angular-node-starter, angular-prisma, angular-postgres, angular-postgresql, angular-tailwind, angular-auth, angular-better-auth, angular-admin-dashboard, angular-dashboard, angular-landing-page, spartan-ui, spartan-ng, angular-shadcn, shadcn-angular, signal-forms, fullstack-starter, open-source-angular-starter, ssr, express, expressjs, prisma, postgresql, tailwindcss, better-auth, typescript, nodejs, pnpm, production-ready, nextjs-alternative, nextjs-for-angular, nextjs-angular, zoneless, angular-zoneless, ngxpress
+
+---
+
+## Creator
 
 Made with ❤️ by [@immohammadjaved](https://x.com/immohammadjaved)
 
-Follow for updates, tips, and more Angular/NodeJs content!
+Follow for updates, tips, and more Angular / Node content.

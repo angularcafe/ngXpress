@@ -1,33 +1,24 @@
-import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
-import { openAPI } from "better-auth/plugins"
+import { betterAuth } from 'better-auth/minimal';
+import { prismaAdapter } from 'better-auth/adapters/prisma';
+import { getTrustedOrigins } from './trusted-origins';
+import { sendDevEmail } from './email';
+import { prisma } from './prisma';
 
-import { prisma } from "./prisma";
 export const auth = betterAuth({
-    trustedOrigins: ["https://demo.ngxpress.dev", "http://localhost:4200", "http://localhost:4000"],
-    database: prismaAdapter(prisma, {
-        provider: "sqlite",
-    }),
-    emailAndPassword: {
-        enabled: true,
-        sendResetPassword: async ({ user, url, token }, request) => {
-            const fullUrl = new URL(url);
-            const params = new URLSearchParams(fullUrl.search);
-            const callbackUrl = params.get('callbackURL');
-
-            if (callbackUrl) {
-                const decodedRedirectUrl = decodeURIComponent(callbackUrl);
-                const passwordResetURL = `${decodedRedirectUrl}?token=${token}`;
-                console.log('Redirect To:', passwordResetURL);
-            }
-            // await sendEmail({
-            //     to: user.email,
-            //     subject: "Reset your password",
-            //     text: `Click the link to reset your password: ${passwordResetURL}`,
-            // });
-        },
+  baseURL: process.env['BETTER_AUTH_URL'],
+  database: prismaAdapter(prisma, { provider: 'postgresql' }),
+  emailAndPassword: {
+    enabled: true,
+    sendResetPassword: async ({ user, url }) => {
+      void sendDevEmail({
+        to: user.email,
+        subject: 'Reset your password',
+        text: `Click the link to reset your password: ${url}`,
+      });
     },
-    plugins: [
-        openAPI(),
-    ]
+    onPasswordReset: async ({ user }) => {
+      console.info(`[auth] Password reset for ${user.email}`);
+    },
+  },
+  trustedOrigins: getTrustedOrigins(),
 });
