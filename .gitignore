@@ -43,3 +43,5 @@ Thumbs.db
 
 /src/generated/prisma
 .vercel
+.env
+.env.local
