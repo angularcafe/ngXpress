@@ -1,37 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "pnpm"
+  },
   "newProjectRoot": "projects",
   "projects": {
     "ngxpress": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "none",
-          "type": "component"
-        },
-        "@schematics/angular:directive": {
-          "type": "directive"
-        },
-        "@schematics/angular:service": {
-          "type": "service"
-        },
-        "@schematics/angular:guard": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:interceptor": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:module": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:pipe": {
-          "typeSeparator": "."
-        },
-        "@schematics/angular:resolver": {
-          "typeSeparator": "."
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -54,7 +31,12 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "externalDependencies": [
+              "@prisma/client",
+              "pg",
+              "prisma"
+            ]
           },
           "configurations": {
             "production": {
@@ -92,23 +74,8 @@
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular/build:extract-i18n"
-        },
         "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ]
-          }
+          "builder": "@angular/build:unit-test"
         }
       }
     }

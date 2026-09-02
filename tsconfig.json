@@ -1,30 +1,6 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@components/*": [
-        "app/components/*"
-      ],
-      "@core/*": [
-        "app/core/*"
-      ],
-      "@layouts/*": [
-        "app/layouts/*"
-      ],
-      "@models/*": [
-        "app/models/*"
-      ],
-      "@pages/*": [
-        "app/pages/*"
-      ],
-      "@services/*": [
-        "app/services/*"
-      ],
-    },
-    "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -34,14 +10,47 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "paths": {
+      "@core/*": ["./src/app/core/*"],
+      "@layouts/*": ["./src/app/shared/layouts/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@components/*": ["./src/app/shared/components/*"],
+      "@spartan-ng/helm/button": ["./src/app/shared/ui/button/src/index.ts"],
+      "@spartan-ng/helm/utils": ["./src/app/shared/ui/utils/src/index.ts"],
+      "@spartan-ng/helm/input": ["./src/app/shared/ui/input/src/index.ts"],
+      "@spartan-ng/helm/label": ["./src/app/shared/ui/label/src/index.ts"],
+      "@spartan-ng/helm/card": ["./src/app/shared/ui/card/src/index.ts"],
+      "@spartan-ng/helm/separator": ["./src/app/shared/ui/separator/src/index.ts"],
+      "@spartan-ng/helm/sonner": ["./src/app/shared/ui/sonner/src/index.ts"],
+      "@spartan-ng/helm/field": ["./src/app/shared/ui/field/src/index.ts"],
+      "@spartan-ng/helm/sidebar": ["./src/app/shared/ui/sidebar/src/index.ts"],
+      "@spartan-ng/helm/sheet": ["./src/app/shared/ui/sheet/src/index.ts"],
+      "@spartan-ng/helm/skeleton": ["./src/app/shared/ui/skeleton/src/index.ts"],
+      "@spartan-ng/helm/tooltip": ["./src/app/shared/ui/tooltip/src/index.ts"],
+      "@spartan-ng/helm/dialog": ["./src/app/shared/ui/dialog/src/index.ts"],
+      "@spartan-ng/helm/badge": ["./src/app/shared/ui/badge/src/index.ts"],
+      "@spartan-ng/helm/alert": ["./src/app/shared/ui/alert/src/index.ts"],
+      "@spartan-ng/helm/table": ["./src/app/shared/ui/table/src/index.ts"],
+      "@spartan-ng/helm/select": ["./src/app/shared/ui/select/src/index.ts"],
+      "@spartan-ng/helm/textarea": ["./src/app/shared/ui/textarea/src/index.ts"],
+      "@spartan-ng/helm/dropdown-menu": ["./src/app/shared/ui/dropdown-menu/src/index.ts"],
+      "@spartan-ng/helm/input-group": ["./src/app/shared/ui/input-group/src/index.ts"],
+      "@spartan-ng/helm/scroll-area": ["./src/app/shared/ui/scroll-area/src/index.ts"],
+      "@spartan-ng/helm/alert-dialog": ["./src/app/shared/ui/alert-dialog/src/index.ts"],
+      "@spartan-ng/helm/checkbox": ["./src/app/shared/ui/checkbox/src/index.ts"],
+      "@spartan-ng/helm/popover": ["./src/app/shared/ui/popover/src/index.ts"],
+      "@spartan-ng/helm/calendar": ["./src/app/shared/ui/calendar/src/index.ts"],
+      "@spartan-ng/helm/date-picker": ["./src/app/shared/ui/date-picker/src/index.ts"],
+      "@spartan-ng/helm/avatar": ["./src/app/shared/ui/avatar/src/index.ts"],
+      "@spartan-ng/helm/collapsible": ["./src/app/shared/ui/collapsible/src/index.ts"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "typeCheckHostBindings": true,
-    "strictTemplates": true
+    "strictInputAccessModifiers": true
   },
   "files": [],
   "references": [

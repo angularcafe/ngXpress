@@ -1,0 +1,12 @@
+verifyDepsBeforeRun: false
+confirmModulesPurge: false
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@prisma/engines': true
+  esbuild: true
+  less: true
+  lmdb: true
+  msgpackr-extract: true
+  nx: true
+  prisma: true

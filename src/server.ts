@@ -5,51 +5,29 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import { toNodeHandler } from 'better-auth/node';
 import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
 import { join } from 'node:path';
 import apiRoutes from './api/api';
-import { toNodeHandler } from "better-auth/node";
 import { auth } from './api/lib/auth';
-import morgan from 'morgan';
+import { apiRateLimiter, authRateLimiter, jsonBodyParser } from './api/lib/security';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+/**
+ * Better Auth handler must be mounted before any body parsers.
+ */
+app.use('/api/auth', authRateLimiter);
+app.all('/api/auth/*splat', toNodeHandler(auth));
 
-app.use(cors({
-  origin: ["https://demo.ngxpress.dev", "http://localhost:4200", "http://localhost:4000"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrcAttr: ["'self'", "'unsafe-inline'"]
-    },
-  })
-);
-
-// Logger middleware (morgan)
-if (process.env['NODE_ENV'] === 'production') {
-  app.use(morgan('combined'));
-} else {
-  app.use(morgan('dev'));
-}
-
-// Register better-auth route BEFORE body parsers and helmet
-app.all('/api/auth/{*any}', toNodeHandler(auth));
-
-// Add body parsers
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Register API routes
+/**
+ * JSON body parser and rate limiting for non-auth API routes.
+ */
+app.use('/api', jsonBodyParser);
+app.use('/api', apiRateLimiter);
 app.use('/api', apiRoutes);
 
 /**
@@ -75,11 +53,29 @@ app.use((req, res, next) => {
     .catch(next);
 });
 
+app.use(
+  (
+    error: unknown,
+    _req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+  ) => {
+    if (res.headersSent) {
+      next(error);
+      return;
+    }
+
+    console.error('[server]', error);
+
+    res.status(500).json({ error: 'Internal server error' });
+  },
+);
+
 /**
- * Start the server if this module is the main entry point.
+ * Start the server if this module is the main entry point, or it is ran via PM2.
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
-if (isMainModule(import.meta.url)) {
+if (isMainModule(import.meta.url) || process.env['pm_id']) {
   const port = process.env['PORT'] || 4000;
   app.listen(port, (error) => {
     if (error) {
