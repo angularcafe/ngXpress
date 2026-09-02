@@ -24,7 +24,7 @@ Thanks for helping improve [ngXpress](https://github.com/angularcafe/ngXpress). 
 ```bash
 pnpm install
 pnpm db:generate
-pnpm db:push
+pnpm db:deploy
 pnpm dev
 ```
 

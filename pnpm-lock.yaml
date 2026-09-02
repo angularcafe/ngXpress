@@ -74,6 +74,9 @@ importers:
       pg:
         specifier: ^8.23.0
         version: 8.23.0
+      prisma:
+        specifier: ^7.9.1
+        version: 7.10.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -117,9 +120,6 @@ importers:
       prettier:
         specifier: ^3.8.1
         version: 3.9.6
-      prisma:
-        specifier: ^7.9.1
-        version: 7.10.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
       tailwindcss:
         specifier: ^4.1.12
         version: 4.3.3

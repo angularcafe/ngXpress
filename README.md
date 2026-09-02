@@ -92,8 +92,10 @@ The previous public template used Angular 20, SQLite, and npm. **ngXpress** is a
 
    ```bash
    pnpm db:generate
-   pnpm db:push
+   pnpm db:deploy
    ```
+
+   `db:deploy` applies committed migrations (`prisma migrate deploy`). Use `pnpm db:migrate` (`prisma migrate dev`) when you change the schema locally. `pnpm db:push` is only for throwaway prototyping.
 
 5. **Dev server** (Angular + Express SSR)
 
@@ -108,11 +110,13 @@ The previous public template used Angular 20, SQLite, and npm. **ngXpress** is a
 | Command | What it does |
 |---|---|
 | `pnpm dev` | Dev server (port 4200) |
-| `pnpm build` | `prisma generate` + production Angular SSR build |
-| `pnpm start` | Serve `dist` (port 4000, or `PORT`) |
+| `pnpm build` | `prisma generate` + production Angular SSR build (does not touch the database) |
+| `pnpm start` | Apply pending migrations, then serve `dist` (port 4000, or `PORT`) |
 | `pnpm test` | Unit tests (Vitest) |
 | `pnpm db:studio` | Prisma Studio |
-| `pnpm db:push` | Push schema to PostgreSQL |
+| `pnpm db:migrate` | Create and apply a migration locally (`prisma migrate dev`) |
+| `pnpm db:deploy` | Apply committed migrations (`prisma migrate deploy`) |
+| `pnpm db:push` | Prototype schema without a migration (local only) |
 | `pnpm auth:generate` | Regenerate Better Auth Prisma models |
 
 Rebrand the demo product in `src/app/core/config/app-brand.ts` (`APP_NAME`, tagline, template URL) and the `<title>` in `src/index.html`.
@@ -155,7 +159,8 @@ src/
 └── styles.css
 prisma/
 ├── schema.prisma
-└── models/                   # auth.prisma, task.prisma
+├── models/                   # auth.prisma, task.prisma
+└── migrations/               # committed SQL; applied with db:deploy
 ```
 
 Add UI features under `src/app/pages`. Add API features under `src/api/features`. Do not hand-edit Helm sources in `src/app/shared/ui` — use the [spartan CLI](https://spartan.ng/).
@@ -202,6 +207,8 @@ pnpm build
 pnpm start
 ```
 
+`pnpm build` only generates the Prisma client and compiles the app. `pnpm start` runs `prisma migrate deploy` before the Node server so an empty production database gets the auth and task tables. If the host has a separate **release** command, set that to `pnpm db:deploy` and you can still use `pnpm start` (a second `migrate deploy` is a no-op when everything is already applied).
+
 ```bash
 DATABASE_URL="postgresql://USER:PASS@HOST:5432/ngxpress"
 BETTER_AUTH_SECRET="your_secret_key"
@@ -226,9 +233,16 @@ PostgreSQL is the default (`DATABASE_URL`, `prisma/schema.prisma`, `@prisma/adap
 1. Change `provider` in `prisma/schema.prisma` and `DATABASE_URL` in `.env`.
 2. Install the matching Prisma adapter (for example `@prisma/adapter-mariadb` or `@prisma/adapter-better-sqlite3`) and wire it in `src/api/lib/prisma.ts`.
 3. Set the same engine on Better Auth in `src/api/lib/auth.ts` (`prismaAdapter(..., { provider: 'mysql' | 'sqlite' | ... })`).
-4. Run `pnpm db:generate` and `pnpm db:push` (or migrations).
+4. Run `pnpm db:generate` and `pnpm db:migrate` (or `pnpm db:deploy` against an empty database).
 
-Prefer `prisma migrate deploy` in production once you add migrations; `db:push` is for local schema sync.
+Production uses `prisma migrate deploy` (`pnpm db:deploy` / `pnpm start`). Do not use `db:push` or `migrate dev` against production: `db push` has no migration history and can drop data; `migrate dev` is a development command.
+
+If this database already has the tables (for example you previously ran `db:push`), do **not** re-run the init SQL. Mark it applied, then deploy:
+
+```bash
+pnpm exec prisma migrate resolve --applied 20260902120000_init
+pnpm db:deploy
+```
 
 ### Hosting
 
