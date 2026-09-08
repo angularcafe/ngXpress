@@ -84,11 +84,19 @@
 
 @layer utilities {
   .landing-hero-gradient {
-    background-image: linear-gradient(to bottom, color-mix(in oklch, var(--muted) 50%, transparent), var(--background));
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--muted) 50%, transparent),
+      var(--background)
+    );
   }
 
   .landing-dot-grid {
-    background-image: radial-gradient(circle, color-mix(in oklch, var(--foreground) 8%, transparent) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      color-mix(in oklch, var(--foreground) 8%, transparent) 1px,
+      transparent 1px
+    );
     background-size: 24px 24px;
   }
 }

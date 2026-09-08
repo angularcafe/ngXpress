@@ -98,9 +98,14 @@ type DashboardStats = {
                 <hlm-skeleton class="h-14 w-full" />
               }
             } @else if (recentTasks().length === 0) {
-              <div class="text-muted-foreground rounded-lg border border-dashed px-4 py-10 text-center text-sm">
+              <div
+                class="text-muted-foreground rounded-lg border border-dashed px-4 py-10 text-center text-sm"
+              >
                 No tasks yet.
-                <a class="text-foreground font-medium underline-offset-4 hover:underline" routerLink="/admin/tasks">
+                <a
+                  class="text-foreground font-medium underline-offset-4 hover:underline"
+                  routerLink="/admin/tasks"
+                >
                   Go to tasks
                 </a>
                 to get started.
@@ -150,7 +155,6 @@ type DashboardStats = {
               }
             </div>
           </div>
-
         </div>
       </div>
     </div>

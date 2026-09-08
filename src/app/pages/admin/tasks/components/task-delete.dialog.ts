@@ -26,7 +26,13 @@ export interface TaskDeleteDialogContext {
 
     <div class="flex justify-end gap-2">
       <button hlmBtn type="button" variant="outline" hlmDialogClose>Cancel</button>
-      <button hlmBtn type="button" variant="destructive" [disabled]="isDeleting()" (click)="confirmDelete()">
+      <button
+        hlmBtn
+        type="button"
+        variant="destructive"
+        [disabled]="isDeleting()"
+        (click)="confirmDelete()"
+      >
         {{ isDeleting() ? 'Deleting...' : 'Delete' }}
       </button>
     </div>

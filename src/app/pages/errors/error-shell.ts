@@ -27,11 +27,10 @@ import type { ErrorPageConfig } from './error.config';
     }),
   ],
   template: `
-    <div class="bg-background relative flex min-h-svh items-center justify-center px-6 py-12 md:py-16">
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute inset-0 overflow-hidden"
-      >
+    <div
+      class="bg-background relative flex min-h-svh items-center justify-center px-6 py-12 md:py-16"
+    >
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           class="bg-primary/5 absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
         ></div>
@@ -67,7 +66,12 @@ import type { ErrorPageConfig } from './error.config';
           <div class="flex flex-wrap items-center justify-center gap-3">
             @for (action of config().actions; track action.label) {
               @if (action.reload) {
-                <button hlmBtn [variant]="action.variant ?? 'default'" type="button" (click)="reload()">
+                <button
+                  hlmBtn
+                  [variant]="action.variant ?? 'default'"
+                  type="button"
+                  (click)="reload()"
+                >
                   <ng-icon name="lucideRotateCcw" />
                   {{ action.label }}
                 </button>

@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main, next]
+  pull_request:
+    branches: [main, next]
+
+env:
+  DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/ngxpress_ci'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ngxpress_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install pnpm and Node.js
+        uses: pnpm/setup@v2
+        with:
+          runtime: node@22.13
+          cache: true
+          require-lockfile: true
+
+      - name: Check formatting
+        run: pnpm exec prettier --check .
+
+      - name: Apply database migrations
+        run: pnpm db:deploy
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test

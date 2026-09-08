@@ -1,5 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
-import { email, form, FormField, minLength, required, submit, validate } from '@angular/forms/signals';
+import {
+  email,
+  form,
+  FormField,
+  minLength,
+  required,
+  submit,
+  validate,
+} from '@angular/forms/signals';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { APP_NAME } from '@core/config/app-brand';

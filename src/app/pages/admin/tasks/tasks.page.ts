@@ -1,5 +1,13 @@
 import { DatePipe, isPlatformBrowser } from '@angular/common';
-import { Component, computed, DestroyRef, inject, PLATFORM_ID, signal, type Signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  PLATFORM_ID,
+  signal,
+  type Signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideEllipsisVertical, lucidePlus, lucideSearch } from '@ng-icons/lucide';
@@ -45,7 +53,9 @@ import { TaskService } from './services/task.service';
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div class="space-y-1">
           <h1 class="text-3xl font-semibold tracking-tight">Tasks</h1>
-          <p class="text-muted-foreground">Manage your tasks with search, filters, and pagination.</p>
+          <p class="text-muted-foreground">
+            Manage your tasks with search, filters, and pagination.
+          </p>
         </div>
         <button hlmBtn type="button" (click)="openCreateDialog()">
           <ng-icon name="lucidePlus" />
@@ -134,7 +144,11 @@ import { TaskService } from './services/task.service';
               }
             } @else if (tasks().length === 0) {
               <tr hlmTr>
-                <td hlmTd colspan="6" class="text-muted-foreground whitespace-normal! py-10 text-center">
+                <td
+                  hlmTd
+                  colspan="6"
+                  class="text-muted-foreground whitespace-normal! py-10 text-center"
+                >
                   No tasks found. Create your first task to get started.
                 </td>
               </tr>

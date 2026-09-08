@@ -36,12 +36,21 @@ export type SidebarUser = {
     @let currentUser = user();
     <ul hlmSidebarMenu>
       <li hlmSidebarMenuItem>
-        <button hlmSidebarMenuButton size="lg" [hlmDropdownMenuTrigger]="menu" [side]="menuSide()" align="end">
+        <button
+          hlmSidebarMenuButton
+          size="lg"
+          [hlmDropdownMenuTrigger]="menu"
+          [side]="menuSide()"
+          align="end"
+        >
           <hlm-avatar class="rounded-lg">
             @if (currentUser.avatar) {
               <img [src]="currentUser.avatar" [alt]="currentUser.name" hlmAvatarImage />
             }
-            <span class="rounded-lg bg-sidebar-primary text-sidebar-primary-foreground" hlmAvatarFallback>
+            <span
+              class="rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+              hlmAvatarFallback
+            >
               {{ currentUser.initials }}
             </span>
           </hlm-avatar>
@@ -62,7 +71,10 @@ export type SidebarUser = {
               @if (currentUser.avatar) {
                 <img [src]="currentUser.avatar" [alt]="currentUser.name" hlmAvatarImage />
               }
-              <span class="rounded-lg bg-sidebar-primary text-sidebar-primary-foreground" hlmAvatarFallback>
+              <span
+                class="rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                hlmAvatarFallback
+              >
                 {{ currentUser.initials }}
               </span>
             </hlm-avatar>

@@ -49,21 +49,21 @@ See ngXpress running as the **Stride** sample app (landing, auth, dashboard, tas
 
 The previous public template used Angular 20, SQLite, and npm. **ngXpress** is a new baseline:
 
-| | Previous template | This repo |
-|---|---|---|
-| Angular | 20 | **22** |
-| Database | SQLite | **PostgreSQL (default)** |
-| Package manager | npm | **pnpm 11** |
-| UI kit | Tailwind only | **spartan/ui (Helm)** |
-| Forms | Template / reactive | **Signal Forms** |
-| Demo CRUD | Todos | **Tasks** (status, priority, due date) |
-| Auth + ORM | Better Auth + Prisma | Better Auth + **Prisma 7** (`@prisma/adapter-pg`) |
+|                 | Previous template    | This repo                                         |
+| --------------- | -------------------- | ------------------------------------------------- |
+| Angular         | 20                   | **22**                                            |
+| Database        | SQLite               | **PostgreSQL (default)**                          |
+| Package manager | npm                  | **pnpm 11**                                       |
+| UI kit          | Tailwind only        | **spartan/ui (Helm)**                             |
+| Forms           | Template / reactive  | **Signal Forms**                                  |
+| Demo CRUD       | Todos                | **Tasks** (status, priority, due date)            |
+| Auth + ORM      | Better Auth + Prisma | Better Auth + **Prisma 7** (`@prisma/adapter-pg`) |
 
 ---
 
 ## Quick start
 
-**Prerequisites:** Node.js 20+, [pnpm 11](https://pnpm.io/), and a database. The default is PostgreSQL (database name `ngxpress`).
+**Prerequisites:** Node.js 22.13+ ([pnpm 11](https://pnpm.io/) itself requires it), and a database. The default is PostgreSQL (database name `ngxpress`).
 
 1. **Use this template** on [github.com/angularcafe/ngXpress](https://github.com/angularcafe/ngXpress), or clone it:
 
@@ -107,17 +107,17 @@ The previous public template used Angular 20, SQLite, and npm. **ngXpress** is a
 
 **Scripts**
 
-| Command | What it does |
-|---|---|
-| `pnpm dev` | Dev server (port 4200) |
-| `pnpm build` | `prisma generate` + production Angular SSR build (does not touch the database) |
-| `pnpm start` | Apply pending migrations, then serve `dist` (port 4000, or `PORT`) |
-| `pnpm test` | Unit tests (Vitest) |
-| `pnpm db:studio` | Prisma Studio |
-| `pnpm db:migrate` | Create and apply a migration locally (`prisma migrate dev`) |
-| `pnpm db:deploy` | Apply committed migrations (`prisma migrate deploy`) |
-| `pnpm db:push` | Prototype schema without a migration (local only) |
-| `pnpm auth:generate` | Regenerate Better Auth Prisma models |
+| Command              | What it does                                                                   |
+| -------------------- | ------------------------------------------------------------------------------ |
+| `pnpm dev`           | Dev server (port 4200)                                                         |
+| `pnpm build`         | `prisma generate` + production Angular SSR build (does not touch the database) |
+| `pnpm start`         | Apply pending migrations, then serve `dist` (port 4000, or `PORT`)             |
+| `pnpm test`          | Unit tests (Vitest)                                                            |
+| `pnpm db:studio`     | Prisma Studio                                                                  |
+| `pnpm db:migrate`    | Create and apply a migration locally (`prisma migrate dev`)                    |
+| `pnpm db:deploy`     | Apply committed migrations (`prisma migrate deploy`)                           |
+| `pnpm db:push`       | Prototype schema without a migration (local only)                              |
+| `pnpm auth:generate` | Regenerate Better Auth Prisma models                                           |
 
 Rebrand the demo product in `src/app/core/config/app-brand.ts` (`APP_NAME`, tagline, template URL) and the `<title>` in `src/index.html`.
 
@@ -178,20 +178,20 @@ import { AdminLayout } from '@layouts/admin.layout';
 import { BrandLogo } from '@components/brand/brand-logo';
 ```
 
-| Alias | Path | Use for |
-|---|---|---|
-| `@core/*` | `src/app/core/*` | Auth, guards, brand, theme |
-| `@pages/*` | `src/app/pages/*` | Route pages |
-| `@layouts/*` | `src/app/shared/layouts/*` | Auth / admin layouts |
-| `@components/*` | `src/app/shared/components/*` | Shared app components |
-| `@shared/*` | `src/app/shared/*` | Shared tree (including layouts) |
-| `@spartan-ng/helm/*` | `src/app/shared/ui/...` | Helm components (see `components.json`) |
+| Alias                | Path                          | Use for                                 |
+| -------------------- | ----------------------------- | --------------------------------------- |
+| `@core/*`            | `src/app/core/*`              | Auth, guards, brand, theme              |
+| `@pages/*`           | `src/app/pages/*`             | Route pages                             |
+| `@layouts/*`         | `src/app/shared/layouts/*`    | Auth / admin layouts                    |
+| `@components/*`      | `src/app/shared/components/*` | Shared app components                   |
+| `@shared/*`          | `src/app/shared/*`            | Shared tree (including layouts)         |
+| `@spartan-ng/helm/*` | `src/app/shared/ui/...`       | Helm components (see `components.json`) |
 
 ---
 
 ## Security and deployment
 
-ngXpress is a **single Node SSR app**. Build once, run `pnpm start` behind TLS. Vercel / Netlify / Docker adapters are not first-class yet; a VPS, VM, or any Node 20+ host works.
+ngXpress is a **single Node SSR app**. Build once, run `pnpm start` behind TLS. Vercel / Netlify / Docker adapters are not first-class yet; a VPS, VM, or any Node 22.13+ host works.
 
 ### Production checklist
 

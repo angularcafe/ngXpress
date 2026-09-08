@@ -20,8 +20,13 @@ type PreviewTask = {
   imports: [RouterLink, NgIcon, HlmBadgeImports, HlmButtonImports, HlmCardImports],
   providers: [provideIcons({ lucideSparkles, lucideArrowRight, lucideCircle })],
   template: `
-    <section id="hero" class="landing-hero-gradient landing-dot-grid relative overflow-hidden py-16 sm:py-24">
-      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+    <section
+      id="hero"
+      class="landing-hero-gradient landing-dot-grid relative overflow-hidden py-16 sm:py-24"
+    >
+      <div
+        class="relative mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16"
+      >
         <div class="space-y-8">
           <span hlmBadge variant="secondary" class="gap-1.5">
             <ng-icon name="lucideSparkles" />
@@ -42,13 +47,7 @@ type PreviewTask = {
               {{ hero.primaryCta }}
               <ng-icon name="lucideArrowRight" />
             </a>
-            <button
-              hlmBtn
-              type="button"
-              variant="outline"
-              size="lg"
-              (click)="onSecondaryClick()"
-            >
+            <button hlmBtn type="button" variant="outline" size="lg" (click)="onSecondaryClick()">
               {{ hero.secondaryCta }}
             </button>
           </div>
@@ -83,11 +82,7 @@ type PreviewTask = {
                     [class]="priorityClass(task.priority)"
                   />
                   <span class="flex-1 truncate text-sm">{{ task.title }}</span>
-                  <span
-                    hlmBadge
-                    [variant]="statusVariant(task.status)"
-                    class="shrink-0 text-xs"
-                  >
+                  <span hlmBadge [variant]="statusVariant(task.status)" class="shrink-0 text-xs">
                     {{ statusLabel(task.status) }}
                   </span>
                 </div>

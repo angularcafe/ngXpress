@@ -11,11 +11,7 @@ import {
   selector: 'app-task-status-badge',
   imports: [HlmBadgeImports],
   template: `
-    <span
-      hlmBadge
-      [variant]="variant()"
-      class="font-medium"
-    >
+    <span hlmBadge [variant]="variant()" class="font-medium">
       {{ TASK_STATUS_LABELS[status()] }}
     </span>
   `,
@@ -41,11 +37,7 @@ export class TaskStatusBadge {
   selector: 'app-task-priority-badge',
   imports: [HlmBadgeImports],
   template: `
-    <span
-      hlmBadge
-      [variant]="variant()"
-      class="font-medium"
-    >
+    <span hlmBadge [variant]="variant()" class="font-medium">
       {{ TASK_PRIORITY_LABELS[priority()] }}
     </span>
   `,

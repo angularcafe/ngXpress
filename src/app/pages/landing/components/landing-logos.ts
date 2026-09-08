@@ -9,10 +9,7 @@ import { LANDING_CONFIG } from '@pages/landing/landing.config';
         <p class="text-muted-foreground mb-8 text-center text-sm font-medium">
           {{ logos.title }}
         </p>
-        <ul
-          class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
-          role="list"
-        >
+        <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4" role="list">
           @for (company of logos.companies; track company) {
             <li>
               <span class="text-muted-foreground/70 text-lg font-semibold tracking-tight">

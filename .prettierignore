@@ -1,0 +1,4 @@
+dist
+.angular
+src/generated
+src/app/shared/ui

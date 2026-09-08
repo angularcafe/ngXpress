@@ -118,17 +118,20 @@ export const LANDING_CONFIG = {
       {
         step: 1,
         title: 'Capture work',
-        description: 'Log issues, bugs, and ideas as they come up. Add context, priority, and assignees in seconds.',
+        description:
+          'Log issues, bugs, and ideas as they come up. Add context, priority, and assignees in seconds.',
       },
       {
         step: 2,
         title: 'Plan your cycle',
-        description: 'Pull items into a sprint, set deadlines, and organize your board by status or priority.',
+        description:
+          'Pull items into a sprint, set deadlines, and organize your board by status or priority.',
       },
       {
         step: 3,
         title: 'Ship with clarity',
-        description: 'Track progress in real time, close out work, and review what your team delivered.',
+        description:
+          'Track progress in real time, close out work, and review what your team delivered.',
       },
     ] satisfies readonly LandingStep[],
   },
@@ -199,8 +202,7 @@ export const LANDING_CONFIG = {
         initials: 'MR',
       },
       {
-        quote:
-          'Finally an issue tracker that doesn\'t get in the way. Clean UI, zero clutter.',
+        quote: "Finally an issue tracker that doesn't get in the way. Clean UI, zero clutter.",
         name: 'Elena Kowalski',
         role: 'Design Director, Brightpath',
         initials: 'EK',

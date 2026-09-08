@@ -122,9 +122,7 @@ export async function createTask(req: Request, res: Response): Promise<void> {
   const description =
     typeof req.body?.description === 'string' ? req.body.description.trim() || null : null;
   const dueDate =
-    typeof req.body?.dueDate === 'string' && req.body.dueDate
-      ? new Date(req.body.dueDate)
-      : null;
+    typeof req.body?.dueDate === 'string' && req.body.dueDate ? new Date(req.body.dueDate) : null;
 
   if (dueDate && Number.isNaN(dueDate.getTime())) {
     res.status(400).json({ error: 'Invalid due date' });

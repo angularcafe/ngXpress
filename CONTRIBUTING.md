@@ -17,7 +17,7 @@ Thanks for helping improve [ngXpress](https://github.com/angularcafe/ngXpress). 
 
 1. Fork the repository and clone your fork.
 2. Create a branch from `main`.
-3. Install [pnpm](https://pnpm.io/) 11, Node 20+, and a local PostgreSQL database.
+3. Install [pnpm](https://pnpm.io/) 11, Node 22.13+ (required by pnpm 11 itself), and a local PostgreSQL database.
 4. Copy `.env.example` to `.env` and set `BETTER_AUTH_SECRET` (`openssl rand -base64 32`).
 5. Create the `ngxpress` database, then:
 

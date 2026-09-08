@@ -17,7 +17,15 @@ const STORAGE_KEY = 'ngxpress-demo-banner-dismissed';
       <hlm-alert
         class="border-blue-200 bg-blue-50 text-center text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-50"
       >
-        <p hlmAlertDescription class="text-center"><ng-icon name="lucideBadgeInfo" class="me-1.5 inline-block size-4" /><span class="font-medium">Demo site.</span> This is a demo built with <a [href]="templateUrl" target="_blank" rel="noopener noreferrer">{{ templateName }}</a>. Explore the template, sign up, and try the dashboard.</p>
+        <p hlmAlertDescription class="text-center">
+          <ng-icon name="lucideBadgeInfo" class="me-1.5 inline-block size-4" /><span
+            class="font-medium"
+            >Demo site.</span
+          >
+          This is a demo built with
+          <a [href]="templateUrl" target="_blank" rel="noopener noreferrer">{{ templateName }}</a
+          >. Explore the template, sign up, and try the dashboard.
+        </p>
         <div hlmAlertAction>
           <button
             hlmBtn

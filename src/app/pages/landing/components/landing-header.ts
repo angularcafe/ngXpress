@@ -38,7 +38,9 @@ import { HlmSheetImports } from '@spartan-ng/helm/sheet';
             type="button"
             variant="ghost"
             size="icon"
-            [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+            [attr.aria-label]="
+              themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+            "
             (click)="themeService.toggle()"
           >
             @if (themeService.theme() === 'dark') {
@@ -49,9 +51,13 @@ import { HlmSheetImports } from '@spartan-ng/helm/sheet';
           </button>
 
           @if (auth.isAuthenticated()) {
-            <a hlmBtn routerLink="/admin/dashboard" class="hidden sm:inline-flex">Go to dashboard</a>
+            <a hlmBtn routerLink="/admin/dashboard" class="hidden sm:inline-flex"
+              >Go to dashboard</a
+            >
           } @else {
-            <a hlmBtn routerLink="/auth/login" variant="ghost" class="hidden sm:inline-flex">Sign in</a>
+            <a hlmBtn routerLink="/auth/login" variant="ghost" class="hidden sm:inline-flex"
+              >Sign in</a
+            >
             <a hlmBtn routerLink="/auth/signup" class="hidden sm:inline-flex">Get started</a>
           }
 
@@ -89,10 +95,14 @@ import { HlmSheetImports } from '@spartan-ng/helm/sheet';
               </nav>
               <div class="mt-auto flex flex-col gap-2 pt-6">
                 @if (auth.isAuthenticated()) {
-                  <a hlmBtn routerLink="/admin/dashboard" (click)="closeMobile()">Go to dashboard</a>
+                  <a hlmBtn routerLink="/admin/dashboard" (click)="closeMobile()"
+                    >Go to dashboard</a
+                  >
                 } @else {
                   <a hlmBtn routerLink="/auth/signup" (click)="closeMobile()">Get started</a>
-                  <a hlmBtn routerLink="/auth/login" variant="outline" (click)="closeMobile()">Sign in</a>
+                  <a hlmBtn routerLink="/auth/login" variant="outline" (click)="closeMobile()"
+                    >Sign in</a
+                  >
                 }
               </div>
             </hlm-sheet-content>
